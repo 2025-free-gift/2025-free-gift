@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free $10 Gift Card Giveaway</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        h1 {
+            color: #2a9d8f;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: #2a9d8f;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #238a7d;
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
+        
+        .btn-verify {
+            background-color: #4c9aff;
+        }
+        
+        .btn-verify:hover {
+            background-color: #3d7fce;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin: 20px 0;
+            height: 20px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        .error-msg {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .counter {
+            text-align: center;
+            font-size: 18px;
+            margin: 15px 0;
+            font-weight: bold;
+            color: #2a9d8f;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .gift-icon {
+            text-align: center;
+            font-size: 50px;
+            margin: 15px 0;
+        }
+        
+        .ad-container-top, .ad-container-bottom {
+            width: 320px;
+            height: 50px;
+            margin: 10px auto;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Ad Container -->
+    <div class="ad-container-top">
+        <!-- Adsterra/PropellerAds Code -->
+        <div>Advertisement (320x50)</div>
+    </div>
+    
+    <div class="container">
+        <!-- Page 1: Entry Form -->
+        <div id="page1" class="page active">
+            <div class="card">
+                <div class="gift-icon">🎁</div>
+                <h1>FREE $10 Gift Card</h1>
+                <p>Enter your details below to claim your reward!</p>
+                
+                <!-- Ad Container Inside Card -->
+                <div class="ad-container-top">
+                    <!-- Adsterra/PropellerAds Code -->
+                    <div>Advertisement (320x50)</div>
+                </div>
+                
+                <form id="entryForm">
+                    <input type="email" id="email" placeholder="Your Email Address" required>
+                    <div id="emailError" class="error-msg">Please enter a valid email address</div>
+                    
+                    <select id="offerType" required>
+                        <option value="" disabled selected>Select Your Reward</option>
+                        <option value="amazon">$10 Amazon Gift Card</option>
+                        <option value="starbucks">$10 Starbucks Gift Card</option>
+                        <option value="netflix">$10 Netflix Credit</option>
+                    </select>
+                    
+                    <button type="button" id="proceedBtn" class="btn">PROCEED</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Page 2: Share Page -->
+        <div id="page2" class="page">
+            <div class="card">
+                <div class="gift-icon">🔄</div>
+                <h1>Almost There!</h1>
+                <p>Share with 5 friends to claim your reward!</p>
+                
+                <!-- Ad Container Inside Card -->
+                <div class="ad-container-top">
+                    <!-- Adsterra/PropellerAds Code -->
+                    <div>Advertisement (320x50)</div>
+                </div>
+                
+                <div class="progress-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+                
+                <div class="counter"><span id="shareCount">0</span>/5 Shared</div>
+                
+                <button id="whatsappShareBtn" class="btn btn-whatsapp">
+                    SHARE VIA WHATSAPP
+                </button>
+                
+                <button id="continueBtn" class="btn hidden">CONTINUE</button>
+            </div>
+        </div>
+        
+        <!-- Page 3: CPA Redirect -->
+        <div id="page3" class="page">
+            <div class="card">
+                <div class="gift-icon">✅</div>
+                <h1>Final Step!</h1>
+                <p>Verify to claim your $10 reward</p>
+                
+                <!-- Ad Container Inside Card -->
+                <div class="ad-container-top">
+                    <!-- Adsterra/PropellerAds Code -->
+                    <div>Advertisement (320x50)</div>
+                </div>
+                
+                <p>Your gift card is ready, but we need to verify you're human.</p>
+                
+                <button id="verifyBtn" class="btn btn-verify">VERIFY NOW</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Ad Container -->
+    <div class="ad-container-bottom">
+        <!-- Adsterra/PropellerAds Code -->
+        <div>Advertisement (320x50)</div>
+    </div>
+    
+    <script>
+        // Elements
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const page3 = document.getElementById('page3');
+        const emailInput = document.getElementById('email');
+        const offerType = document.getElementById('offerType');
+        const emailError = document.getElementById('emailError');
+        const proceedBtn = document.getElementById('proceedBtn');
+        const whatsappShareBtn = document.getElementById('whatsappShareBtn');
+        const continueBtn = document.getElementById('continueBtn');
+        const verifyBtn = document.getElementById('verifyBtn');
+        const progressBar = document.getElementById('progressBar');
+        const shareCount = document.getElementById('shareCount');
+        
+        // User data
+        let userData = {
+            email: '',
+            offerSelected: '',
+            sharesCompleted: 0
+        };
+        
+        // Email validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Page navigation
+        function showPage(pageNum) {
+            page1.classList.remove('active');
+            page2.classList.remove('active');
+            page3.classList.remove('active');
+            
+            if (pageNum === 1) page1.classList.add('active');
+            else if (pageNum === 2) page2.classList.add('active');
+            else if (pageNum === 3) page3.classList.add('active');
+        }
+        
+        // Update progress bar
+        function updateProgress() {
+            const progressPercentage = (userData.sharesCompleted / 5) * 100;
+            progressBar.style.width = progressPercentage + '%';
+            shareCount.textContent = userData.sharesCompleted;
+            
+            if (userData.sharesCompleted >= 5) {
+                continueBtn.classList.remove('hidden');
+            }
+        }
+        
+        // Event Listeners
+        proceedBtn.addEventListener('click', function() {
+            const email = emailInput.value.trim();
+            const offer = offerType.value;
+            
+            if (!isValidEmail(email)) {
+                emailError.style.display = 'block';
+                return;
+            }
+            
+            if (!offer) {
+                alert('Please select a reward option');
+                return;
+            }
+            
+            // Store user data
+            userData.email = email;
+            userData.offerSelected = offer;
+            
+            // Hide error if shown
+            emailError.style.display = 'none';
+            
+            // Navigate to page 2
+            showPage(2);
+        });
+        
+        whatsappShareBtn.addEventListener('click', function() {
+            // Increment share count (in real implementation, this would verify an actual share)
+            userData.sharesCompleted++;
+            
+            // Update progress UI
+            updateProgress();
+            
+            // Create the share link
+            const shareText = encodeURIComponent("🔥 Get a FREE $10 Amazon Gift Card! 🔥\nClick here to claim: https://tinyurl.com/Free-Gift-2025");
+            const whatsappUrl = `https://wa.me/?text=${shareText}`;
+            
+            // Open WhatsApp share in a new window
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        continueBtn.addEventListener('click', function() {
+            // Navigate to page 3
+            showPage(3);
+        });
+        
+        verifyBtn.addEventListener('click', function() {
+            // Redirect to CPA offer
+            // Replace this URL with your actual CPA offer link
+            const cpaOfferUrl = "https://ih1.redbubble.net/image.5023977100.5051/raf,360x360,075,t,fafafa:ca443f4786.jpg";
+            window.location.href = cpaOfferUrl;
+        });
+        
+        // Initialize
+        emailInput.addEventListener('input', function() {
+            if (isValidEmail(this.value)) {
+                emailError.style.display = 'none';
+            }
+        });
+    </script>
+    
+    <!-- IMPORTANT: Replace these comment placeholders with actual ad scripts -->
+    <!-- PropellerAds/Adsterra Script would go here -->
+</body>
+</html>
